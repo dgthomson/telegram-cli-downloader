@@ -1,4 +1,4 @@
-FROM alpine as builder
+FROM alpine:3.9.4 as builder
 
 RUN apk upgrade --no-cache && apk add --no-cache apk-tools \
     musl \
@@ -26,7 +26,7 @@ RUN apk upgrade --no-cache && apk add --no-cache apk-tools \
     cd tg && \
     ./configure && make
 
-FROM alpine
+FROM alpine:3.9.4
 
 VOLUME [ "/volumes/config", "/volumes/downloads" ]
 
